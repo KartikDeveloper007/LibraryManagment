@@ -43,4 +43,19 @@ public class UserServiceImpl implements UserService {
         userRepo.deleteById(id);
     }
 
+    @Override
+    public Users updateuser(Long id, Users users) {
+        Users updatedUser= userRepo.findById(id).get();
+      if(!(updatedUser.getUserEmail().equalsIgnoreCase(users.getUserEmail())))
+        {
+            updatedUser.setUserEmail(users.getUserEmail());
+        }
+         if (!(updatedUser.getUserName().equals(users.getUserName())))
+      {
+          updatedUser.setUserName(users.getUserName());
+      }
+        return userRepo.save(updatedUser);
+    }
+
+
 }
