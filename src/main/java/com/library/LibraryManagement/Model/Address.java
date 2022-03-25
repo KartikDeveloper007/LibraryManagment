@@ -1,5 +1,7 @@
 package com.library.LibraryManagement.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,6 +27,7 @@ public class Address {
     private Long pinCode;
 
     @OneToOne(mappedBy = "address")
+    @JsonIgnore
     private Student student;
     @OneToOne(mappedBy = "address1")
     private Librarian librarian;

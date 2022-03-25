@@ -1,5 +1,6 @@
 package com.library.LibraryManagement.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,6 +27,8 @@ public class Librarian {
     private Date doj;
     private Boolean isActive;
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "librarianAddressId")
+    @JsonIgnore
     private Address address1;
 
 }
