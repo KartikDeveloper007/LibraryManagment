@@ -20,6 +20,4 @@ public class Publisher {
     private String publisherName;
     private String publisherEmail;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Books books1;
 }

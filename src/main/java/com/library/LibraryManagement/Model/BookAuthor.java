@@ -1,5 +1,6 @@
 package com.library.LibraryManagement.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class BookAuthor {
     private String authorName;
 
     @ManyToOne
+    @JsonBackReference
     private Books books;
 
 }
