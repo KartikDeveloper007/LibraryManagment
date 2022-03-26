@@ -24,9 +24,5 @@ public class Address {
     private String city;
     private Long pinCode;
 
-    @OneToOne(mappedBy = "address")
-    private Student student;
-    @OneToOne(mappedBy = "address1")
-    private Librarian librarian;
 
 }

@@ -1,9 +1,8 @@
 package com.library.LibraryManagement.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,17 +17,18 @@ public class StudentBookIssued {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long issueId;
-    private String studentName;
-    private Date dob;
-    private Long bookId;
     private String bookName;
     private String bookSubject;
-    private Date issueDate;
-    private Date returnDate;
-    private Double penality;
+    private String issueDate;
+    private String returnDate;
     private Boolean isReturned;
     private Boolean isIssued;
-    private Long studentId;
+
+
+    @ManyToOne
+    @JsonBackReference
+    @ToString.Exclude
+    private Student student;
 
 
 }

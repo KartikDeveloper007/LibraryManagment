@@ -1,13 +1,14 @@
 package com.library.LibraryManagement.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -30,7 +31,15 @@ public class Student {
     private Double penality;
     private String profilePicture;
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name="address_student_id")
+    @ToString.Exclude
     private Address address;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "s_id")
+    @JsonManagedReference
+    @ToString.Exclude
+    private List<StudentBookIssued> studentBookIssuedList;
 
 
 }
