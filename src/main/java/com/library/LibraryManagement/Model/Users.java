@@ -30,6 +30,6 @@ public class Users {
     @JoinTable(name = "user_role_TBL",joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private UsersDetails usersDetails;
 }
