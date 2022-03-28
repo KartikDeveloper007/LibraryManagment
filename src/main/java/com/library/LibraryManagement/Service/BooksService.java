@@ -15,12 +15,10 @@ public interface BooksService {
 
     public void DeleteBooks(Long bookId);
 
-//    Books updateBookById(Books books, Long bookId);
 
     public Books fetchBookByName(String bookName);
 
     Books getDetailsByPId(Long publisherId);
-
 
 
     public Books fetchBookBySubjectId(Long subjectId);

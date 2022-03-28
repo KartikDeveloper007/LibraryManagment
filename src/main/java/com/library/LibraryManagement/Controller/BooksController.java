@@ -24,7 +24,7 @@ public class BooksController {
     }
 
     @GetMapping("/get/{bookId}")
-    public Books fetchBooksList(@PathVariable("bookId") Long bookId) {
+    public Books fetchBooksListById(@PathVariable("bookId") Long bookId) {
         return booksImpl.fetchBookById(bookId);
     }
 
@@ -45,9 +45,9 @@ public class BooksController {
     }
 
     @PutMapping("/updateById")
-            public Books updateBookById(@RequestBody Books books, @RequestParam("id") Long bookId) {
-            return booksImpl.updateBookById(books,bookId);
-}
+    public Books updateBookById(@RequestBody Books books, @RequestParam("id") Long bookId) {
+        return booksImpl.updateBookById(books, bookId);
+    }
 
 
     @DeleteMapping("/deleteBook/{bookId}")

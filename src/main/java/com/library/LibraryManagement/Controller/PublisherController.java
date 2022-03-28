@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/publisher")
 public class PublisherController {
 @Autowired
     private PublisherService publisherService;
 
-@GetMapping("/findBookByPublisherName/{pname}")
-    public Books findBookByPublisherName(@PathVariable("pname") String pname)
-{
-    return publisherService.findBookByPublisherName(pname);
-}
-
+    @GetMapping("/findBooksByPublisherName/{pname}")
+    public List<Books> findByPublisherName(@PathVariable("pname") String pname) {
+        return publisherService.findBookByPublisherName(pname);
+    }
 }
