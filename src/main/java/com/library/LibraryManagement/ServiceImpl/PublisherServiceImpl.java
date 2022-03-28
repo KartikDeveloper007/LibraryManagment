@@ -7,6 +7,9 @@ import com.library.LibraryManagement.Service.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PublisherServiceImpl implements PublisherService {
     @Autowired
@@ -15,9 +18,16 @@ public class PublisherServiceImpl implements PublisherService {
     private BooksImpl books;
 
     @Override
-    public Books findBookByPublisherName(String pname) {
-        Publisher publisher = publisherRepo.findByPublisherName(pname);
-        Books books1 = books.getDetailsByPId(publisher.getPublisherId());
-        return books1;
+    public List<Books> findBookByPublisherName(String pname) {
+        List<Publisher> publishers = publisherRepo.findByPublisherName(pname);
+        List<Books> book = new ArrayList<>();
+        for (Publisher publisher : publishers
+        ) {
+
+            book.add(books.getDetailsByPId(publisher.getPublisherId()));
+
+
+        }
+        return book;
     }
 }
