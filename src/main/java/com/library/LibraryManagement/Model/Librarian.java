@@ -1,5 +1,6 @@
 package com.library.LibraryManagement.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,5 +31,9 @@ public class Librarian {
     @JoinColumn(name = "librarianAddressId")
     @JsonIgnore
     private Address address1;
+
+    @ManyToOne
+    @JsonBackReference
+    private Library library;
 
 }
