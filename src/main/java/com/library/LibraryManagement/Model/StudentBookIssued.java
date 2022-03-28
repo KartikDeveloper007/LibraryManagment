@@ -26,8 +26,8 @@ public class StudentBookIssued {
 
 
     @ManyToOne
-    @JsonBackReference
     @ToString.Exclude
+    @JsonIgnore
     private Student student;
 
 

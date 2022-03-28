@@ -37,7 +37,7 @@ public class Student {
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "s_id")
-    @JsonManagedReference
+    @JsonIgnore
     @ToString.Exclude
     private List<StudentBookIssued> studentBookIssuedList;
 

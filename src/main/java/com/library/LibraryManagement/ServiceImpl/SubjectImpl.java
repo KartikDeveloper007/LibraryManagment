@@ -21,20 +21,21 @@ public class SubjectImpl implements SubjectService {
 
 
     @Override
-    public Books findBookBySubjectCode(String subjectCode) {
+    public List<Books> findBookBySubjectCode(String subjectCode) {
         Subject subject = subjectRepo.findBySubjectCode(subjectCode);
-        Books books2 = books.fetchBookBySubjectId(subject.getSubjectId());
+       List <Books> books2 = books.fetchBookBySubjectId(subject.getSubjectId());
         return books2;
     }
 
     @Override
-    public List<Books> findBookBySubjectName(String subjectName) {
+    public List<List<Books>> findBookBySubjectName(String subjectName) {
         List<Subject> subject = subjectRepo.findBySubjectName(subjectName);
-        List<Books> books2 = new ArrayList<>();
+        List<List<Books>> books2 = new ArrayList<>();
         for (Subject subject1 : subject
         ) {
 
-            books2.add(books.fetchBookBySubjectId(subject1.getSubjectId()));
+           books2.add( books.fetchBookBySubjectId(subject1.getSubjectId()));
+
 
 
         }

@@ -23,7 +23,7 @@ public interface BooksService {
 
 
 
-    public Books fetchBookBySubjectId(Long subjectId);
+    public List<Books> fetchBookBySubjectId(Long subjectId);
 
     Books updateBookById(Books books, Long bookId);
 }

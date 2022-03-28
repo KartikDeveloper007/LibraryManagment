@@ -18,11 +18,11 @@ public class SubjectController {
     private SubjectImpl subjectImpl;
 
     @GetMapping("/findBooksBySubjectCode/{subjectCode}")
-    public Books findBySubjectCode(@PathVariable("subjectCode") String subjectCode) {
+    public List<Books>  findBySubjectCode(@PathVariable("subjectCode") String subjectCode) {
         return subjectImpl.findBookBySubjectCode(subjectCode);
     }
     @GetMapping("/findBooksBySubjectName/{subjectName}")
-    public List<Books> findBySubjectName(@PathVariable("subjectName") String subjectName) {
+    public List<List<Books>> findBySubjectName(@PathVariable("subjectName") String subjectName) {
         return subjectImpl.findBookBySubjectName(subjectName);
     }
 

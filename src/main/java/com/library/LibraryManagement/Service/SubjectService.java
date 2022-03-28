@@ -7,7 +7,7 @@ import java.util.List;
 
 @Service
 public interface SubjectService  {
-    Books findBookBySubjectCode(String subjectCode);
-    List<Books> findBookBySubjectName(String subjectName);
+    List<Books> findBookBySubjectCode(String subjectCode);
+    List<List<Books>> findBookBySubjectName(String subjectName);
 
 }

@@ -59,7 +59,7 @@ public class BooksImpl implements BooksService {
 
 
     @Override
-    public Books fetchBookBySubjectId(Long subjectId) {
+    public List<Books> fetchBookBySubjectId(Long subjectId) {
         return booksRepo.findBookBySubjectSubjectId(subjectId);
     }
 

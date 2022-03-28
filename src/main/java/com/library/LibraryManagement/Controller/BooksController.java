@@ -40,7 +40,7 @@ public class BooksController {
 
 
     @GetMapping("/getBySubjectId/{subjectId}")
-    public Books fetchBookBySubjectId(@PathVariable("subjectId") Long subjectId) {
+    public List<Books> fetchBookBySubjectId(@PathVariable("subjectId") Long subjectId) {
         return booksImpl.fetchBookBySubjectId(subjectId);
     }
 
