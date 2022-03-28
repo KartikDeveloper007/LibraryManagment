@@ -44,8 +44,8 @@ public class BooksController {
         return booksImpl.fetchBookBySubjectId(subjectId);
     }
 
-    @PutMapping("/updateById/{bookId}")
-            public Books updateBookById(@RequestBody Books books, @PathVariable("bookId") Long bookId) {
+    @PutMapping("/updateById")
+            public Books updateBookById(@RequestBody Books books, @RequestParam("id") Long bookId) {
             return booksImpl.updateBookById(books,bookId);
 }
 

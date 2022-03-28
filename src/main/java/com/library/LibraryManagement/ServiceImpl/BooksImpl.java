@@ -65,10 +65,16 @@ public class BooksImpl implements BooksService {
 
     @Override
     public Books updateBookById(Books books, Long bookId) {
+
+
         Books updated = booksRepo.findById(bookId).get();
+        if (updated.getBookId() == null) {
+            System.out.println("Element no present");
+        }
         updated.setBookName(books.getBookName());
         updated.setAuthor(books.getAuthor());
         updated.setIsAvailable(books.getIsAvailable());
+
         updated.setPublisher(books.getPublisher());
         updated.setNoOfPages(books.getNoOfPages());
         updated.setSubject(books.getSubject());
