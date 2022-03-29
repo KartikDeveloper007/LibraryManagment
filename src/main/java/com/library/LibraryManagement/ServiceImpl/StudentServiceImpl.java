@@ -70,19 +70,19 @@ public class StudentServiceImpl implements StudentService {
         SimpleDateFormat simpleDateFormatt = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
         Double penality = Double.valueOf(0);
         String returndate = null;
-        Date date =new Date();
+        Date date = new Date();
         for (StudentBookIssued list : studentBookIssuedList) {
-            Date bookreturndate= simpleDateFormatt.parse(list.getReturnDate());
+            Date bookreturndate = simpleDateFormatt.parse(list.getReturnDate());
             returndate = simpleDateFormatt.format(date);
             System.out.println(list.getReturnDate());
-            Date lateDate =simpleDateFormatt.parse(returndate);
+            Date lateDate = simpleDateFormatt.parse(returndate);
             long time = lateDate.getTime() - bookreturndate.getTime();
             long days_difference = (time / (1000 * 60 * 60 * 24)) % 365;
             System.out.println(days_difference);
-           if(days_difference>0) {
-               penality = Double.valueOf((days_difference * 5));
-               System.out.println(penality);
-           }
+            if (days_difference > 0) {
+                penality = Double.valueOf((days_difference * 5));
+                System.out.println(penality);
+            }
         }
         student.setPenality(penality);
         studentRepo.save(student);
@@ -96,53 +96,46 @@ public class StudentServiceImpl implements StudentService {
 
         SimpleDateFormat simpleDateFormatt = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
         String returndate = null;
-        Date date =new Date();
+        Date date = new Date();
 
         Boolean returnedBook = false;
         Double penality = Double.valueOf(0);
-      //  Calendar c = Calendar.getInstance();
+        //  Calendar c = Calendar.getInstance();
         for (StudentBookIssued list : studentBookIssuedList) {
             Date issueDate = simpleDateFormatt.parse(list.getIssueDate());
-            Date bookreturndate= simpleDateFormatt.parse(list.getReturnDate());
+            Date bookreturndate = simpleDateFormatt.parse(list.getReturnDate());
 //            c.setTime(issueDate);
 //            c.add(Calendar.DAY_OF_MONTH, 7);
-           returndate = simpleDateFormatt.format(date);
+            returndate = simpleDateFormatt.format(date);
             System.out.println(list.getReturnDate());
 
             if (returndate.equals(list.getReturnDate())) {
                 System.out.println(returndate);
                 returnedBook = true;
                 System.out.println(returnedBook);
-            }else{
-               // System.out.println("return");
-                Date lateDate =simpleDateFormatt.parse(returndate);
+            } else {
+                // System.out.println("return");
+                Date lateDate = simpleDateFormatt.parse(returndate);
                 long time = lateDate.getTime() - bookreturndate.getTime();
                 long days_difference = (time / (1000 * 60 * 60 * 24)) % 365;
                 //System.out.println(days_difference);
                 penality = Double.valueOf((days_difference * 5));
-               // System.out.println(penality);
+                // System.out.println(penality);
 
             }
         }
 
-        if(returnedBook){
+        if (returnedBook) {
             Boolean finalReturnedBook = returnedBook;
             System.out.println(finalReturnedBook);
-            studentBookIssuedList.stream().forEach(e->e.setIsReturned(finalReturnedBook));
+            studentBookIssuedList.stream().forEach(e -> e.setIsReturned(finalReturnedBook));
             studentBookIssueRepo.saveAll(studentBookIssuedList);
 
-        }else{
+        } else {
             student.setPenality(penality);
             studentRepo.save(student);
         }
-//        StudentBookIssued studentBookIssued =new StudentBookIssued();
-//
-//        if(returnedBook==true) {
-//            studentBookIssued.setIsReturned(returnedBook);
-//        }else{
-//            penality(student.getStudentId());
-//        }
-//       studentBookIssueRepo.save(studentBookIssued);
+
 
     }
 
