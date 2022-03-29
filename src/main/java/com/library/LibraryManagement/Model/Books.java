@@ -22,7 +22,7 @@ public class Books {
     private Long bookId;
     private String bookName;
     private Integer noOfPages;
-//    private String publisherName;
+
     private Boolean isAvailable;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

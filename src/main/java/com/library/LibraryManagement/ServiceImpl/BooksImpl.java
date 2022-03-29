@@ -4,7 +4,7 @@ import com.library.LibraryManagement.Model.Books;
 import com.library.LibraryManagement.Repository.BooksRepo;
 import com.library.LibraryManagement.Repository.PublisherRepo;
 import com.library.LibraryManagement.Repository.SubjectRepo;
-import com.library.LibraryManagement.Service.BooksService;
+import com.library.LibraryManagement.ServiceTest.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -83,6 +83,15 @@ public class BooksImpl implements BooksService {
         booksRepo.save(updated);
         return updated;
     }
+
+    @Override
+    public String fetchBookNameById(Long bookId) {
+        String book ;
+
+        book = booksRepo.findById(bookId).get().getBookName();
+        return book;
+    }
+
 
     @Override
     public void DeleteBooks(Long bookId) {

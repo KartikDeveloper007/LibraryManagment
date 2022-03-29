@@ -3,7 +3,7 @@ package com.library.LibraryManagement.ServiceImpl;
 import com.library.LibraryManagement.Model.Books;
 import com.library.LibraryManagement.Model.Publisher;
 import com.library.LibraryManagement.Repository.PublisherRepo;
-import com.library.LibraryManagement.Service.PublisherService;
+import com.library.LibraryManagement.ServiceTest.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
