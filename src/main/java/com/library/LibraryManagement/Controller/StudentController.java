@@ -1,5 +1,6 @@
 package com.library.LibraryManagement.Controller;
 
+import com.library.LibraryManagement.Model.Books;
 import com.library.LibraryManagement.Model.Student;
 import com.library.LibraryManagement.Model.StudentBookIssued;
 import com.library.LibraryManagement.ServiceImpl.StudentServiceImpl;
@@ -55,4 +56,9 @@ public class StudentController {
     public Student getStudentbyNumber(@PathVariable("mobileNo") Long mobileNo){
         return studentService.getStudentByMobileNo(mobileNo);
     }
+//    @PostMapping("/issuebook/{bid}")
+//    public Books issueBook(@PathVariable("bid")  Long id)
+//    {
+//        return studentService.issueBook(id);
+//    }
 }

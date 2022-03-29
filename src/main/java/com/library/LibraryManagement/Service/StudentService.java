@@ -1,5 +1,6 @@
 package com.library.LibraryManagement.Service;
 
+import com.library.LibraryManagement.Model.Books;
 import com.library.LibraryManagement.Model.Student;
 import com.library.LibraryManagement.Model.StudentBookIssued;
 
@@ -16,4 +17,6 @@ public interface StudentService {
     public void penality(Long id) throws ParseException;
 
     public Student getStudentByMobileNo(Long mobileNo);
+
+//    Books issueBook(Long id);
 }

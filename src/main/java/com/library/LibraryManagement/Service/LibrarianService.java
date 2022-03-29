@@ -27,5 +27,5 @@ public interface LibrarianService {
 
     List<Books> findAllBooks();
 
-    void issueBook(Long id, StudentBookIssued studentBookIssued);
+    void issueBook(Long id, Long Bid);
 }

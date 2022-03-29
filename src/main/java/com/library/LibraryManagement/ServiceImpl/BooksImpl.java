@@ -79,7 +79,7 @@ public class BooksImpl implements BooksService {
         updated.setNoOfPages(books.getNoOfPages());
         updated.setSubject(books.getSubject());
 
-
+        System.out.println("is avalib====> " +updated.getIsAvailable());
         booksRepo.save(updated);
         return updated;
     }

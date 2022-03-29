@@ -19,12 +19,12 @@ public class Library {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long libraryId;
-    private Long noOfBooksAvailable;
+     private Long noOfBooksAvailable;
     private Long noOfBooksIssued;
-    private Long noOfBooksReturnedToday;
-    private Long noOfBooksIssuedToday;
+     private Long noOfBooksReturnedToday;
+     private Long noOfBooksIssuedToday;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY,mappedBy = "library")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "library")
     @JsonManagedReference
     private List<Librarian> librarian;
 

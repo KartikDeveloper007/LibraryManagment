@@ -100,10 +100,10 @@ public class LibrarianController {
         return studentService.getStudentsBookIssued(id);
     }
 
-    @PostMapping("/issueBook/{StudentId}")
-    public void issueBook(@PathVariable("StudentId") Long Id,@RequestBody StudentBookIssued studentBookIssued)
+    @PostMapping("/issueBook/{StudentId}/{bookId}")
+    public void issueBook(@PathVariable("StudentId") Long Id,@PathVariable("bookId") Long bookId)
     {
-         librarianService.issueBook(Id,studentBookIssued);
+         librarianService.issueBook(Id,bookId);
     }
 
 }
