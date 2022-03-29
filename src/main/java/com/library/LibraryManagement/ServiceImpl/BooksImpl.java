@@ -81,7 +81,7 @@ public class BooksImpl implements BooksService {
 
     @Override
     public String fetchBookNameById(Long bookId) {
-        String book = booksRepo.findById(bookId).get().getBookName();
+        String book = booksRepo.findById(bookId).get().getSubject().getSubjectName();
         return book;
     }
 
