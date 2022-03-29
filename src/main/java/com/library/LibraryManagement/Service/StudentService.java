@@ -15,7 +15,7 @@ public interface StudentService {
     public  void deleteStudent(Long id);
     public List<StudentBookIssued> getStudentsBookIssued(Long id);
     public void penality(Long id) throws ParseException;
-
+    public void isReturnedBooks(Long id) throws ParseException;
     public Student getStudentByMobileNo(Long mobileNo);
 
 //    Books issueBook(Long id);
