@@ -1,8 +1,7 @@
-package com.library.LibraryManagement.ServiceTest;
+package com.library.LibraryManagement.Service;
 
 import com.library.LibraryManagement.Model.Books;
 import com.library.LibraryManagement.Model.Librarian;
-import com.library.LibraryManagement.Model.StudentBookIssued;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,5 +26,5 @@ public interface LibrarianService {
 
     List<Books> findAllBooks();
 
-    void issueBook(Long id, Long Bid);
+    String issueBook(Long id, Long Bid);
 }

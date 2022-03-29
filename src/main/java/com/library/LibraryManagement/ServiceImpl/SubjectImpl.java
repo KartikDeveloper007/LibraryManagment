@@ -4,7 +4,7 @@ package com.library.LibraryManagement.ServiceImpl;
 import com.library.LibraryManagement.Model.Books;
 import com.library.LibraryManagement.Model.Subject;
 import com.library.LibraryManagement.Repository.SubjectRepo;
-import com.library.LibraryManagement.ServiceTest.SubjectService;
+import com.library.LibraryManagement.Service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

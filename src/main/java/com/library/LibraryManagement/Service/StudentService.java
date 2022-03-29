@@ -1,4 +1,4 @@
-package com.library.LibraryManagement.ServiceTest;
+package com.library.LibraryManagement.Service;
 
 import com.library.LibraryManagement.Model.Books;
 import com.library.LibraryManagement.Model.Student;

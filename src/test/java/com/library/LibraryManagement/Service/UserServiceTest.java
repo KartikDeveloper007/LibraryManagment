@@ -1,11 +1,9 @@
-package com.library.LibraryManagement.ServiceTest;
+package com.library.LibraryManagement.Service;
 
-import com.library.LibraryManagement.Controller.UserController;
 import com.library.LibraryManagement.Model.Role;
 import com.library.LibraryManagement.Model.Users;
 import com.library.LibraryManagement.Model.UsersDetails;
 import com.library.LibraryManagement.Repository.UserRepo;
-import com.library.LibraryManagement.Service.UserService;
 import com.library.LibraryManagement.ServiceImpl.UserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -10,8 +10,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Builder
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "library_TBL")

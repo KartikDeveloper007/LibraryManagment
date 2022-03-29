@@ -4,7 +4,7 @@ import com.library.LibraryManagement.Model.Books;
 import com.library.LibraryManagement.Model.Librarian;
 import com.library.LibraryManagement.Model.Student;
 import com.library.LibraryManagement.Model.StudentBookIssued;
-import com.library.LibraryManagement.ServiceTest.LibrarianService;
+import com.library.LibraryManagement.Service.LibrarianService;
 import com.library.LibraryManagement.ServiceImpl.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -79,31 +79,29 @@ public class LibrarianController {
     }
 
     @GetMapping("/findStudentById/{StudentId}")
-    public Student findStudentById(@PathVariable("StudentId") Long id)
-    {
+    public Student findStudentById(@PathVariable("StudentId") Long id) {
         return studentService.getStudentById(id);
     }
 
     @PutMapping("/updatestudent/{id}")
-    public Student updateStudentById(@RequestBody Student student,@PathVariable("id") Long id){
-        return studentService.updateStudent(student,id);
+    public Student updateStudentById(@RequestBody Student student, @PathVariable("id") Long id) {
+        return studentService.updateStudent(student, id);
     }
 
 
     @DeleteMapping("/deletestudent/{id}")
-    public void deleteStudentBuId(@PathVariable("id") Long id){
+    public void deleteStudentBuId(@PathVariable("id") Long id) {
         studentService.deleteStudent(id);
     }
 
     @GetMapping("/getBooksIssue/{id}")
-    public List<StudentBookIssued> getStudentBooks(@PathVariable("id") Long id){
+    public List<StudentBookIssued> getStudentBooks(@PathVariable("id") Long id) {
         return studentService.getStudentsBookIssued(id);
     }
 
     @PostMapping("/issueBook/{StudentId}/{bookId}")
-    public void issueBook(@PathVariable("StudentId") Long Id,@PathVariable("bookId") Long bookId)
-    {
-         librarianService.issueBook(Id,bookId);
+    public String issueBook(@PathVariable("StudentId") Long Id, @PathVariable("bookId") Long bookId) {
+     return    librarianService.issueBook(Id, bookId);
     }
 
 }

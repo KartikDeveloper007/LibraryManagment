@@ -5,10 +5,11 @@ import com.library.LibraryManagement.Model.Librarian;
 import com.library.LibraryManagement.Model.Student;
 import com.library.LibraryManagement.Model.StudentBookIssued;
 import com.library.LibraryManagement.Repository.LibrarianRepo;
-import com.library.LibraryManagement.ServiceTest.LibrarianService;
+import com.library.LibraryManagement.Service.LibrarianService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -68,7 +69,7 @@ public class LibrarianServiceImpl implements LibrarianService {
     }
 
     @Override
-    public void issueBook(Long id, Long Bid) {
+    public String issueBook(Long id, Long Bid) {
         int i = 0;
 
         Student student1 = studentService.getStudentById(id);
@@ -94,9 +95,10 @@ public class LibrarianServiceImpl implements LibrarianService {
             student1.setStudentBookIssuedList(studentBookIssuedList);
             student1.setNoOfBookIssued(i);
             studentService.updateStudent(student1, id);
-        }
-        else{
-            System.out.println("book already issued");
+            return "successful issued";
+        } else {
+//            ResponseEntity<String> message=new ResponseEntity<String>("book already issued");
+            return "book already issued";
         }
     }
 
