@@ -4,7 +4,7 @@ import com.library.LibraryManagement.Model.Student;
 import com.library.LibraryManagement.Model.StudentBookIssued;
 import com.library.LibraryManagement.Repository.StudentBookIssueRepo;
 import com.library.LibraryManagement.Repository.StudentRepo;
-import com.library.LibraryManagement.Service.StudentService;
+import com.library.LibraryManagement.ServiceTest.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

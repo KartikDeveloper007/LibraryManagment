@@ -1,7 +1,7 @@
 package com.library.LibraryManagement.Controller;
 
 import com.library.LibraryManagement.Model.Books;
-import com.library.LibraryManagement.Service.PublisherService;
+import com.library.LibraryManagement.ServiceTest.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -4,7 +4,7 @@ import com.library.LibraryManagement.Model.BookAuthor;
 import com.library.LibraryManagement.Model.Books;
 import com.library.LibraryManagement.Repository.BookAuthorRepo;
 import com.library.LibraryManagement.Repository.BooksRepo;
-import com.library.LibraryManagement.Service.BookAuthorService;
+import com.library.LibraryManagement.ServiceTest.BookAuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
