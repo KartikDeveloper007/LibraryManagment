@@ -49,8 +49,8 @@ public class LibrarianController {
     }
 
     @DeleteMapping("/deleteBook/{bookId}")
-    public void deleteBooks(@PathVariable("bookId") Long bookId) {
-        librarianService.deleteBooks(bookId);
+    public String deleteBooks(@PathVariable("bookId") Long bookId) {
+        return librarianService.deleteBooks(bookId);
     }
 
     @GetMapping("findBookBySubjectName/{SubjectName}")
@@ -101,7 +101,7 @@ public class LibrarianController {
 
     @PostMapping("/issueBook/{StudentId}/{bookId}")
     public String issueBook(@PathVariable("StudentId") Long Id, @PathVariable("bookId") Long bookId) {
-     return    librarianService.issueBook(Id, bookId);
+        return librarianService.issueBook(Id, bookId);
     }
 
 }

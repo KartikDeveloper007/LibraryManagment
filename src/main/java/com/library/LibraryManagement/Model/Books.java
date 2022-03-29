@@ -1,6 +1,7 @@
 package com.library.LibraryManagement.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,7 +34,9 @@ public class Books {
     @JsonManagedReference
     private List<BookAuthor> author;
 
+   // @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
     private Publisher publisher;
 
     @ManyToOne

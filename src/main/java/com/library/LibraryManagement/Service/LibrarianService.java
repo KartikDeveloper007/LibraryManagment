@@ -18,7 +18,7 @@ public interface LibrarianService {
 
    Books findByBookName(String bName);
 
-    void deleteBooks(Long bookId);
+    String deleteBooks(Long bookId);
 
     List<List<Books>> findBookBySubjectName(String subjectName);
 

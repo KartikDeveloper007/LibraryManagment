@@ -49,8 +49,9 @@ public class LibrarianServiceImpl implements LibrarianService {
     }
 
     @Override
-    public void deleteBooks(Long bookId) {
+    public String  deleteBooks(Long bookId) {
         booksimpl.DeleteBooks(bookId);
+        return "successfully deleted";
     }
 
     @Override
