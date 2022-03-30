@@ -55,4 +55,10 @@ public class StudentController {
     public Student getStudentbyNumber(@PathVariable("mobileNo") Long mobileNo){
         return studentService.getStudentByMobileNo(mobileNo);
     }
+
+    @GetMapping("/booksReturnedByStudent/{id}")
+    public void isReturnedBookByStudent(@PathVariable("id") Long id) throws ParseException {
+        studentService.isReturnedBooks(id);
+
+    }
 }

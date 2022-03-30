@@ -1,7 +1,6 @@
 package com.library.LibraryManagement.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 
@@ -37,7 +36,6 @@ public class Student {
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "s_id")
-    @JsonIgnore
     @ToString.Exclude
     private List<StudentBookIssued> studentBookIssuedList;
 

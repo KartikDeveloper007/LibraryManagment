@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -39,25 +37,25 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student updateStudent(Student student, Long id) {
-        Student updateStudent =getStudentById(id);
-       updateStudent.setFirstName(student.getFirstName());
-       updateStudent.setLastName(student.getLastName());
-       updateStudent.setStudentEmail(student.getStudentEmail());
-       updateStudent.setAddress(student.getAddress());
-       updateStudent.setDob(student.getDob());
-       updateStudent.setGender(student.getGender());
-       updateStudent.setIsActive(student.getIsActive());
-       updateStudent.setMobileNo(student.getMobileNo());
-       updateStudent.setNoOfBookIssued(student.getNoOfBookIssued());
-       updateStudent.setPenality(student.getPenality());
-       updateStudent.setProfilePicture(student.getProfilePicture());
-       updateStudent.setStudentBookIssuedList(student.getStudentBookIssuedList());
+        Student updateStudent = getStudentById(id);
+        updateStudent.setFirstName(student.getFirstName());
+        updateStudent.setLastName(student.getLastName());
+        updateStudent.setStudentEmail(student.getStudentEmail());
+        updateStudent.setAddress(student.getAddress());
+        updateStudent.setDob(student.getDob());
+        updateStudent.setGender(student.getGender());
+        updateStudent.setIsActive(student.getIsActive());
+        updateStudent.setMobileNo(student.getMobileNo());
+        updateStudent.setNoOfBookIssued(student.getNoOfBookIssued());
+        updateStudent.setPenality(student.getPenality());
+        updateStudent.setProfilePicture(student.getProfilePicture());
+        updateStudent.setStudentBookIssuedList(student.getStudentBookIssuedList());
         return studentRepo.save(updateStudent);
     }
 
     @Override
     public void deleteStudent(Long id) {
-       studentRepo.deleteById(id);
+        studentRepo.deleteById(id);
     }
 
     @Override
@@ -65,27 +63,88 @@ public class StudentServiceImpl implements StudentService {
         return studentBookIssueRepo.getStudentsBooksById(id);
     }
 
-      @Override
+    @Override
     public void penality(Long id) throws ParseException {
-        Student student= getStudentById(id);
-        List<StudentBookIssued> studentBookIssuedList=  student.getStudentBookIssuedList();
-        SimpleDateFormat simpleDateFormatt=new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
-         Double penality= Double.valueOf(0);
-          for(StudentBookIssued list: studentBookIssuedList){
-              Date issueDate= simpleDateFormatt.parse(list.getIssueDate());
-              Date returnDate =simpleDateFormatt.parse(list.getReturnDate());
-              long time= returnDate.getTime() - issueDate.getTime();
-              long days_difference = (time/ (1000*60*60*24)) % 365;
-             // System.out.println(days_difference);
-              if(days_difference>7){
-                  penality= Double.valueOf((days_difference*5) - 35);
-                  System.out.println(penality);
+        Student student = getStudentById(id);
+        List<StudentBookIssued> studentBookIssuedList = student.getStudentBookIssuedList();
+        SimpleDateFormat simpleDateFormatt = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+        Double penality = Double.valueOf(0);
+        String returndate = null;
+        Date date =new Date();
+        for (StudentBookIssued list : studentBookIssuedList) {
+            Date bookreturndate= simpleDateFormatt.parse(list.getReturnDate());
+            returndate = simpleDateFormatt.format(date);
+            System.out.println(list.getReturnDate());
+            Date lateDate =simpleDateFormatt.parse(returndate);
+            long time = lateDate.getTime() - bookreturndate.getTime();
+            long days_difference = (time / (1000 * 60 * 60 * 24)) % 365;
+            System.out.println(days_difference);
+           if(days_difference>0) {
+               penality = Double.valueOf((days_difference * 5));
+               System.out.println(penality);
+           }
+        }
+        student.setPenality(penality);
+        studentRepo.save(student);
+    }
 
-              }
-         }
-          student.setPenality(penality);
-          studentRepo.save(student);
-  }
+    @Override
+    public void isReturnedBooks(Long id) throws ParseException {
+        Student student = getStudentById(id);
+        List<StudentBookIssued> studentBookIssuedList = student.getStudentBookIssuedList();
+        // System.out.println(studentBookIssuedList);
+
+        SimpleDateFormat simpleDateFormatt = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+        String returndate = null;
+        Date date =new Date();
+
+        Boolean returnedBook = false;
+        Double penality = Double.valueOf(0);
+      //  Calendar c = Calendar.getInstance();
+        for (StudentBookIssued list : studentBookIssuedList) {
+            Date issueDate = simpleDateFormatt.parse(list.getIssueDate());
+            Date bookreturndate= simpleDateFormatt.parse(list.getReturnDate());
+//            c.setTime(issueDate);
+//            c.add(Calendar.DAY_OF_MONTH, 7);
+           returndate = simpleDateFormatt.format(date);
+            System.out.println(list.getReturnDate());
+
+            if (returndate.equals(list.getReturnDate())) {
+                System.out.println(returndate);
+                returnedBook = true;
+                System.out.println(returnedBook);
+            }else{
+               // System.out.println("return");
+                Date lateDate =simpleDateFormatt.parse(returndate);
+                long time = lateDate.getTime() - bookreturndate.getTime();
+                long days_difference = (time / (1000 * 60 * 60 * 24)) % 365;
+                //System.out.println(days_difference);
+                penality = Double.valueOf((days_difference * 5));
+               // System.out.println(penality);
+
+            }
+        }
+
+        if(returnedBook){
+            Boolean finalReturnedBook = returnedBook;
+            System.out.println(finalReturnedBook);
+            studentBookIssuedList.stream().forEach(e->e.setIsReturned(finalReturnedBook));
+            studentBookIssueRepo.saveAll(studentBookIssuedList);
+
+        }else{
+            student.setPenality(penality);
+            studentRepo.save(student);
+        }
+//        StudentBookIssued studentBookIssued =new StudentBookIssued();
+//
+//        if(returnedBook==true) {
+//            studentBookIssued.setIsReturned(returnedBook);
+//        }else{
+//            penality(student.getStudentId());
+//        }
+//       studentBookIssueRepo.save(studentBookIssued);
+
+    }
 
     @Override
     public Student getStudentByMobileNo(Long mobileNo) {
