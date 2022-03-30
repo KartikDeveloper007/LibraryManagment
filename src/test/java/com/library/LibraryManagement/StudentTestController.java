@@ -46,9 +46,9 @@ public class StudentTestController {
         Student student=new Student();
 
         List<StudentBookIssued> studentBookIssuedList =new ArrayList<>();
-        studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
-        studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
-        studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//        studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//        studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//        studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
 
 
         Student studenttest=Student.builder()
@@ -92,9 +92,9 @@ public class StudentTestController {
         Student student=new Student();
 
         List<StudentBookIssued> studentBookIssuedList =new ArrayList<>();
-        studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
-        studentBookIssuedList.add(new StudentBookIssued(2L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
-        studentBookIssuedList.add(new StudentBookIssued(3L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//        studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//        studentBookIssuedList.add(new StudentBookIssued(2L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//        studentBookIssuedList.add(new StudentBookIssued(3L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
 
 
         Student studenttest=Student.builder()
@@ -136,9 +136,9 @@ public class StudentTestController {
        Student student=new Student();
 
        List<StudentBookIssued> studentBookIssuedList =new ArrayList<>();
-       studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
-       studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
-       studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//       studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//       studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//       studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
 
 
        Student studenttest=Student.builder()
@@ -186,9 +186,9 @@ public class StudentTestController {
        Student student=new Student();
 
        List<StudentBookIssued> studentBookIssuedList =new ArrayList<>();
-       studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
-       studentBookIssuedList.add(new StudentBookIssued(2L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
-       studentBookIssuedList.add(new StudentBookIssued(3L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//       studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//       studentBookIssuedList.add(new StudentBookIssued(2L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//       studentBookIssuedList.add(new StudentBookIssued(3L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
 
 
        Student studenttest=Student.builder()
@@ -265,9 +265,9 @@ public class StudentTestController {
        Student student=new Student();
 
        List<StudentBookIssued> studentBookIssuedList =new ArrayList<>();
-       studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
-       studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
-       studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//       studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//       studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
+//       studentBookIssuedList.add(new StudentBookIssued(1L,"Let us C","C","24-04-2022","230-04-2022",false,true,student));
 
 
        Student studenttest=Student.builder()
