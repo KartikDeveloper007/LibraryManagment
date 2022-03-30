@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -30,5 +31,9 @@ public class StudentBookIssued {
     @JsonIgnore
     private Student student;
 
-
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id")
+    @JsonIgnore
+    @ToString.Exclude
+    private List<Books> booksList;
 }

@@ -28,6 +28,12 @@ public class BooksController {
         return booksImpl.fetchBookById(bookId);
     }
 
+    @GetMapping("/get/bookName/{bookId}")
+    public String fetchBookNameById(@PathVariable("bookId") Long bookId) {
+        return booksImpl.fetchBookNameById(bookId);
+    }
+
+
     @GetMapping("/getbyBookName/{bookName}")
     public Books fetchBookByName(@PathVariable("bookName") String bookName) {
         return booksImpl.fetchBookByName(bookName);

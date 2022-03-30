@@ -34,11 +34,6 @@ public class BooksImpl implements BooksService {
         return booksRepo.findById(bookId).get();
     }
 
-//    @Override
-//    public Books updateBookById(Books books, Long bookId) {
-//        Books bookDb = booksRepo.findById(bookId).get();
-//        return booksRepo.save(bookDb);
-//    }
 
 
     @Override
@@ -79,10 +74,17 @@ public class BooksImpl implements BooksService {
         updated.setNoOfPages(books.getNoOfPages());
         updated.setSubject(books.getSubject());
 
-
+        System.out.println("is avalib====> " +updated.getIsAvailable());
         booksRepo.save(updated);
         return updated;
     }
+
+    @Override
+    public String fetchBookNameById(Long bookId) {
+        String book = booksRepo.findById(bookId).get().getSubject().getSubjectName();
+        return book;
+    }
+
 
     @Override
     public void DeleteBooks(Long bookId) {

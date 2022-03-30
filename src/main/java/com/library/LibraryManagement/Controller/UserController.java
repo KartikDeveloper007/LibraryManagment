@@ -2,7 +2,6 @@ package com.library.LibraryManagement.Controller;
 
 import com.library.LibraryManagement.Model.Users;
 import com.library.LibraryManagement.Service.UserService;
-import com.library.LibraryManagement.ServiceImpl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

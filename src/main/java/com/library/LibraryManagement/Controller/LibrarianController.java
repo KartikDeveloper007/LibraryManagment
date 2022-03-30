@@ -79,31 +79,29 @@ public class LibrarianController {
     }
 
     @GetMapping("/findStudentById/{StudentId}")
-    public Student findStudentById(@PathVariable("StudentId") Long id)
-    {
+    public Student findStudentById(@PathVariable("StudentId") Long id) {
         return studentService.getStudentById(id);
     }
 
     @PutMapping("/updatestudent/{id}")
-    public Student updateStudentById(@RequestBody Student student,@PathVariable("id") Long id){
-        return studentService.updateStudent(student,id);
+    public Student updateStudentById(@RequestBody Student student, @PathVariable("id") Long id) {
+        return studentService.updateStudent(student, id);
     }
 
 
     @DeleteMapping("/deletestudent/{id}")
-    public void deleteStudentBuId(@PathVariable("id") Long id){
+    public void deleteStudentBuId(@PathVariable("id") Long id) {
         studentService.deleteStudent(id);
     }
 
     @GetMapping("/getBooksIssue/{id}")
-    public List<StudentBookIssued> getStudentBooks(@PathVariable("id") Long id){
+    public List<StudentBookIssued> getStudentBooks(@PathVariable("id") Long id) {
         return studentService.getStudentsBookIssued(id);
     }
 
-    @PostMapping("/issueBook/{StudentId}")
-    public void issueBook(@PathVariable("StudentId") Long Id,@RequestBody StudentBookIssued studentBookIssued)
-    {
-         librarianService.issueBook(Id,studentBookIssued);
+    @PostMapping("/issueBook/{StudentId}/{bookId}")
+    public String issueBook(@PathVariable("StudentId") Long Id, @PathVariable("bookId") Long bookId) {
+     return    librarianService.issueBook(Id, bookId);
     }
 
 }

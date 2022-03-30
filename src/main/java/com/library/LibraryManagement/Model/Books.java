@@ -1,5 +1,6 @@
 package com.library.LibraryManagement.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,19 +22,21 @@ public class Books {
     private Long bookId;
     private String bookName;
     private Integer noOfPages;
-//    private String publisherName;
+
     private Boolean isAvailable;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Subject subject;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
     @JsonManagedReference
     private List<BookAuthor> author;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Publisher publisher;
 
-
+    @ManyToOne
+    @JsonIgnore
+    private StudentBookIssued studentBookIssued;
 }

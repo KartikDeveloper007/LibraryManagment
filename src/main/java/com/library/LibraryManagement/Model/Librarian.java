@@ -27,7 +27,7 @@ public class Librarian {
     private String gender;
     private Date doj;
     private Boolean isActive;
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "librarianAddressId")
     @JsonIgnore
     private Address address1;

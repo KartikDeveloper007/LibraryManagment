@@ -26,4 +26,6 @@ public interface BooksService {
     public List<Books> fetchBookBySubjectId(Long subjectId);
 
     Books updateBookById(Books books, Long bookId);
+
+    String fetchBookNameById(Long bookId);
 }

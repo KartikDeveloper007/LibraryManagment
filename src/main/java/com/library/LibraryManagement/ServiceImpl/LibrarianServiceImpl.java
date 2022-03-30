@@ -15,12 +15,13 @@ import java.util.List;
 @Service
 public class LibrarianServiceImpl implements LibrarianService {
     @Autowired
-    private  BooksImpl books;
+    private BooksImpl booksimpl;
     @Autowired
     private StudentServiceImpl studentService;
     @Autowired
     private LibrarianRepo librarianRepo;
-    @Autowired SubjectImpl subject;
+    @Autowired
+    SubjectImpl subject;
 
     @Override
     public Librarian saveLibrarian(Librarian librarian) {
@@ -39,17 +40,17 @@ public class LibrarianServiceImpl implements LibrarianService {
 
     @Override
     public Books findBooksBy(Long id) {
-        return books.fetchBookById(id);
+        return booksimpl.fetchBookById(id);
     }
 
     @Override
     public Books findByBookName(String bName) {
-        return books.fetchBookByName(bName);
+        return booksimpl.fetchBookByName(bName);
     }
 
     @Override
     public void deleteBooks(Long bookId) {
-        books.DeleteBooks(bookId);
+        booksimpl.DeleteBooks(bookId);
     }
 
     @Override
@@ -59,25 +60,46 @@ public class LibrarianServiceImpl implements LibrarianService {
 
     @Override
     public List<Books> findBookBySubjectId(Long subId) {
-        return books.fetchBookBySubjectId(subId);
+        return booksimpl.fetchBookBySubjectId(subId);
     }
 
     @Override
     public List<Books> findAllBooks() {
-        return books.fetchBooks();
+        return booksimpl.fetchBooks();
     }
 
     @Override
-    public void issueBook(Long id, StudentBookIssued studentBookIssued) {
-        int i=0;
+    public String issueBook(Long id, Long Bid) {
+        int i = 0;
 
-        Student student1= studentService.getStudentById(id);
-        List<StudentBookIssued> studentBookIssuedList =student1.getStudentBookIssuedList();
-        studentBookIssuedList.add(studentBookIssued);
-        i++;
-        student1.setStudentBookIssuedList(studentBookIssuedList);
-        student1.setNoOfBookIssued(i);
-        studentService.updateStudent(student1,id);
+        Student student1 = studentService.getStudentById(id);
+        List<StudentBookIssued> studentBookIssuedList = student1.getStudentBookIssuedList();
+        Books books = booksimpl.fetchBookById(Bid);
+        if (books.getIsAvailable()) {
+            books.setIsAvailable(false);
+            booksimpl.updateBookById(books, books.getBookId());
+
+            StudentBookIssued studentBookIssued = StudentBookIssued.builder().isIssued(true).issueDate("25-2-2022").bookName(books.getBookName())
+                    .build();
+            List<Books> booksList;
+            if (studentBookIssued.getBooksList() == null) {
+                booksList = new ArrayList<>();
+            } else {
+                booksList = studentBookIssued.getBooksList();
+            }
+            booksList.add(books);
+            studentBookIssued.setBooksList(booksList);
+
+            studentBookIssuedList.add(studentBookIssued);
+            i++;
+            student1.setStudentBookIssuedList(studentBookIssuedList);
+            student1.setNoOfBookIssued(i);
+            studentService.updateStudent(student1, id);
+            return "successful issued";
+        } else {
+//            ResponseEntity<String> message=new ResponseEntity<String>("book already issued");
+            return "book already issued";
+        }
     }
 
 }

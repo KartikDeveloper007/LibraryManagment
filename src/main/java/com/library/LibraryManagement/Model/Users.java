@@ -26,10 +26,10 @@ public class Users {
     private Date registrationDate;
     private Boolean isActive;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(name = "user_role_TBL",joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private UsersDetails usersDetails;
 }
